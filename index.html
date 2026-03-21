@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodTrack — Nutrition Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="header-content">
+      <div class="logo">FoodTrack</div>
+      <h1>Know What<br>You <span>Eat</span></h1>
+      <p class="tagline">// nutrition data powered by Open Food Facts</p>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" title="Toggle color theme">
+      <span class="icon-dark">🌙</span>
+      <span class="icon-light">☀️</span>
+    </button>
+  </header>
+
+  <div class="search-section">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search food, e.g. 'banana', 'greek yogurt', 'oats'..." />
+      <button onclick="search()">Search</button>
+    </div>
+    <div class="filters">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+      <button class="filter-btn" onclick="setFilter('low-cal', this)">Low Cal (&lt;100)</button>
+      <button class="filter-btn" onclick="setFilter('high-protein', this)">High Protein (&gt;10g)</button>
+      <button class="filter-btn" onclick="setFilter('low-sugar', this)">Low Sugar (&lt;5g)</button>
+      <select class="sort-select" id="sortSelect" onchange="applySort()">
+        <option value="default">Sort: Default</option>
+        <option value="cal-asc">Calories ↑</option>
+        <option value="cal-desc">Calories ↓</option>
+        <option value="protein-desc">Protein ↓</option>
+        <option value="sugar-asc">Sugar ↑</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="status-bar" id="statusBar" style="display:none">
+    <span>Showing <span class="count" id="resultCount">0</span> results</span>
+    <span id="queryLabel"></span>
+  </div>
+
+  <div id="resultsContainer">
+    <div class="state-box">
+      <span class="icon">🥗</span>
+      <p>Search for any food to see<br>detailed nutrition information.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-brand" id="modalBrand"></div>
+      </div>
+      <button class="close-btn" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="container">
+  <footer>
+    <span>Data from <a href="https://world.openfoodfacts.org" target="_blank">Open Food Facts</a> — Open Database License</span>
+    <span>FoodTrack © 2025</span>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
