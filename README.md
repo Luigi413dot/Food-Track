@@ -41,3 +41,4 @@ FoodTrack is a clean, modern web application that provides real-time nutrition i
 
 ---
 *FoodTrack © 2026 — Nutrition Intelligence for all.*
+Youtube demo video: https://youtu.be/UeVI7QsJI3o
